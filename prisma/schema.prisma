@@ -1,0 +1,250 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(cuid())
+  name         String
+  email        String   @unique
+  phone        String?
+  password     String
+  role         String   @default("PATIENT")
+  wilaya       String?
+  approved     Boolean  @default(false)
+  suspended    Boolean  @default(false)
+  adminNotes   String?
+  avatar       String?
+  specialty    String?
+  bio          String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  patientAppointments  Appointment[]      @relation("PatientAppointments")
+  providerAppointments Appointment[]      @relation("ProviderAppointments")
+  patientRecords       MedicalRecord[]    @relation("PatientRecords")
+  providerRecords      MedicalRecord[]    @relation("ProviderRecords")
+  notifications        Notification[]
+  sentMessages         Message[]          @relation("SentMessages")
+  receivedMessages     Message[]          @relation("ReceivedMessages")
+  givenReviews         Review[]           @relation("PatientReviews")
+  receivedReviews      Review[]           @relation("ProviderReviews")
+  ownedServices        Service[]          @relation("ProviderServices")
+  serviceRequests      ServiceRequest[]   @relation("PatientRequests")
+  serviceResponses     ServiceResponse[]  @relation("ProviderResponses")
+  auditLogs            AuditLog[]
+  documents            ProviderDocument[]
+}
+
+model Service {
+  id          String   @id @default(cuid())
+  name        String
+  nameAr      String
+  nameFr      String
+  category    String
+  description String
+  descFr      String
+  icon        String
+  price       Float
+  duration    Int
+  available   Boolean  @default(true)
+  active      Boolean  @default(true)
+  featured    Boolean  @default(false)
+  providerId  String?
+  wilaya      String?
+  createdAt   DateTime @default(now())
+
+  provider        User?            @relation("ProviderServices", fields: [providerId], references: [id])
+  appointments    Appointment[]
+  serviceRequests ServiceRequest[]
+}
+
+model Appointment {
+  id          String   @id @default(cuid())
+  patientId   String
+  providerId  String?
+  serviceId   String
+  status      String   @default("PENDING")
+  scheduledAt DateTime
+  address     String?
+  notes       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  patient  User    @relation("PatientAppointments", fields: [patientId], references: [id])
+  provider User?   @relation("ProviderAppointments", fields: [providerId], references: [id])
+  service  Service @relation(fields: [serviceId], references: [id])
+  payment  Payment?
+  messages Message[]
+  review   Review?
+}
+
+model ServiceRequest {
+  id          String   @id @default(cuid())
+  patientId   String
+  serviceId   String
+  providerId  String?
+  description String
+  address     String
+  scheduledAt DateTime
+  urgency     String   @default("NORMAL")
+  status      String   @default("PENDING")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  patient   User              @relation("PatientRequests", fields: [patientId], references: [id])
+  service   Service           @relation(fields: [serviceId], references: [id])
+  responses ServiceResponse[]
+}
+
+model ServiceResponse {
+  id               String   @id @default(cuid())
+  serviceRequestId String
+  providerId       String
+  status           String   @default("PENDING")
+  message          String?
+  createdAt        DateTime @default(now())
+
+  serviceRequest ServiceRequest @relation(fields: [serviceRequestId], references: [id])
+  provider       User           @relation("ProviderResponses", fields: [providerId], references: [id])
+}
+
+model MedicalRecord {
+  id            String   @id @default(cuid())
+  patientId     String
+  providerId    String
+  title         String
+  diagnosis     String?
+  history       String?
+  treatments    String?
+  prescriptions String?
+  notes         String?
+  documents     String?
+  labResults    String?
+  images        String?
+  date          DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  patient  User @relation("PatientRecords", fields: [patientId], references: [id])
+  provider User @relation("ProviderRecords", fields: [providerId], references: [id])
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  type      String   @default("INFO")
+  message   String
+  link      String?
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id])
+}
+
+model Payment {
+  id            String      @id @default(cuid())
+  appointmentId String      @unique
+  amount        Float
+  status        String      @default("PENDING")
+  method        String?
+  createdAt     DateTime    @default(now())
+
+  appointment   Appointment @relation(fields: [appointmentId], references: [id])
+}
+
+model Message {
+  id            String      @id @default(cuid())
+  appointmentId String
+  senderId      String
+  receiverId    String
+  content       String
+  read          Boolean     @default(false)
+  createdAt     DateTime    @default(now())
+
+  appointment   Appointment @relation(fields: [appointmentId], references: [id])
+  sender        User        @relation("SentMessages", fields: [senderId], references: [id])
+  receiver      User        @relation("ReceivedMessages", fields: [receiverId], references: [id])
+}
+
+model Review {
+  id            String      @id @default(cuid())
+  appointmentId String      @unique
+  patientId     String
+  providerId    String
+  rating        Int
+  comment       String?
+  hidden        Boolean     @default(false)
+  createdAt     DateTime    @default(now())
+
+  appointment   Appointment @relation(fields: [appointmentId], references: [id])
+  patient       User        @relation("PatientReviews", fields: [patientId], references: [id])
+  provider      User        @relation("ProviderReviews", fields: [providerId], references: [id])
+}
+
+// ── Admin-specific models ────────────────────────────────────────────────────
+
+model AuditLog {
+  id         String   @id @default(cuid())
+  adminId    String
+  action     String
+  target     String
+  targetId   String?
+  details    String?
+  ip         String?
+  createdAt  DateTime @default(now())
+
+  admin User @relation(fields: [adminId], references: [id])
+}
+
+model PlatformSettings {
+  id              String   @id @default(cuid())
+  key             String   @unique
+  value           String
+  updatedAt       DateTime @updatedAt
+}
+
+model AdminNotification {
+  id          String   @id @default(cuid())
+  title       String
+  message     String
+  type        String   @default("INFO")
+  targetRole  String   @default("ALL")
+  sentBy      String
+  createdAt   DateTime @default(now())
+}
+
+model Category {
+  id        String   @id @default(cuid())
+  name      String
+  nameFr    String
+  nameAr    String
+  icon      String?
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+}
+
+model Wilaya {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  nameAr    String
+  code      String   @unique
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+}
+
+model ProviderDocument {
+  id         String   @id @default(cuid())
+  providerId String
+  type       String
+  url        String
+  status     String   @default("PENDING")
+  adminNote  String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  provider User @relation(fields: [providerId], references: [id])
+}
