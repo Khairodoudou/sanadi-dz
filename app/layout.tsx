@@ -28,7 +28,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const dir = lang === "ar" ? "rtl" : "ltr";
 
   return (
-    <html lang={lang} dir={dir} suppressHydrationWarning>
+    <html lang={lang} dir={dir} data-scroll-behavior="smooth" suppressHydrationWarning>
       <body className={`${inter.variable} ${lang === "ar" ? "font-arabic" : ""}`}>
         <ThemeProvider>
           <LanguageProvider initialLang={lang}>{children}</LanguageProvider>

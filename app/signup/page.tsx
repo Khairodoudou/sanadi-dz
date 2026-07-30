@@ -122,7 +122,7 @@ export default function SignupPage() {
       <div className="flex-1 flex items-center justify-center p-6 bg-[var(--bg)] overflow-y-auto" style={{ textAlign: lang === "ar" ? "right" : "left" }}>
         <div className="w-full max-w-md py-8">
           <Link href="/" className="flex items-center gap-2 mb-6 lg:hidden" style={{ flexDirection: lang === "ar" ? "row-reverse" : "row" }}>
-            <Image src="/logo.svg" alt="SanadiDZ" width={36} height={36} />
+            <Image src={logoImg} alt="SanadiDZ" className="w-9 h-9 object-contain" unoptimized />
             <span className="font-bold text-xl">SanadiDZ</span>
           </Link>
 

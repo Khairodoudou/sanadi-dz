@@ -1,6 +1,4 @@
 import { PrismaClient } from "@prisma/client";
-import { PrismaLibSQL } from "@prisma/adapter-libsql";
-import { createClient } from "@libsql/client";
 
 function createPrismaClient() {
   const url = process.env.TURSO_DATABASE_URL;
@@ -8,8 +6,13 @@ function createPrismaClient() {
 
   // Use Turso (LibSQL) in production, SQLite locally
   if (url && url.startsWith("libsql://")) {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const adapterLibsql = require("@prisma/adapter-libsql");
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const { createClient } = require("@libsql/client");
     const libsql = createClient({ url, authToken });
-    const adapter = new PrismaLibSQL(libsql);
+    const AdapterClass = adapterLibsql.PrismaLibSQL || adapterLibsql.PrismaLibSql;
+    const adapter = new AdapterClass(libsql);
     return new PrismaClient({ adapter });
   }
 
