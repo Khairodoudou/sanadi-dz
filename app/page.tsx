@@ -3,6 +3,7 @@ import Image from "next/image";
 import heroImg from "@/public/images/hero.png";
 import featuresImg from "@/public/images/features.png";
 import telemedicineImg from "@/public/images/telemedicine.png";
+import coachingImg from "@/public/images/coaching.png";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { cookies } from "next/headers";
@@ -10,7 +11,7 @@ import { translations, Language } from "@/lib/i18n";
 import {
   Stethoscope, Heart, Video, ClipboardList, Salad, Car,
   ChevronRight, Shield, Clock, Star, Users, CheckCircle,
-  ArrowRight, HeartPulse, Baby, Activity, Brain,
+  ArrowRight, HeartPulse, Baby, Activity, Brain, Award, Sparkles, Target, CheckCircle2,
 } from "lucide-react";
 
 export default async function HomePage() {
@@ -286,6 +287,117 @@ export default async function HomePage() {
                   <p className="text-sm font-medium mb-1">{dict.home_why_sat_title}</p>
                   <div className="text-4xl font-extrabold gradient-text">98%</div>
                   <p className="text-xs text-[var(--text-muted)] mt-1">{dict.home_why_sat_desc}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Certified Coaching Banner Feature */}
+      <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="rounded-3xl bg-gradient-to-r from-emerald-950 via-teal-950 to-slate-900 text-white overflow-hidden shadow-2xl relative grid lg:grid-cols-2 gap-8 items-center p-8 md:p-12 border border-emerald-500/20">
+          <div style={{ textAlign: lang === "ar" ? "right" : "left" }}>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-400/30 text-xs font-semibold mb-4 text-emerald-300 backdrop-blur-md">
+              <Award size={15} className="text-emerald-400" />
+              {lang === "ar"
+                ? "تدريب معتمد ومتابعة مخصصة"
+                : lang === "en"
+                ? "Certified Coaching & Tailored Support"
+                : "Coaching Certifié & Suivi Sur-Mesure"}
+            </div>
+            
+            <h3 className="text-3xl md:text-4xl font-extrabold mb-4 leading-tight">
+              {lang === "ar" ? (
+                <>حقّق أهدافك الصحية مع <span className="text-emerald-400">مدربينا الخبراء</span></>
+              ) : lang === "en" ? (
+                <>Achieve your health goals with <span className="text-emerald-400">certified expert coaches</span></>
+              ) : (
+                <>Atteignez vos objectifs avec nos <span className="text-emerald-400">coachs experts certifiés</span></>
+              )}
+            </h3>
+            
+            <p className="text-slate-300 text-sm md:text-base leading-relaxed mb-6">
+              {lang === "ar"
+                ? "استفد من مرافقة شخصية في التغذية والياقة البدنية والرفاهية مع برامج مخصصة وتوجيه مستمر من طرف متخصصين معتمدين."
+                : lang === "en"
+                ? "Benefit from personalized nutrition, fitness, and overall wellness coaching with tailored programs and continuous follow-up by accredited experts."
+                : "Bénéficiez d'un accompagnement personnalisé en nutrition, remise en forme et bien-être avec des programmes sur-mesure et un suivi continu par des experts agréés."}
+            </p>
+
+            {/* Feature Badges */}
+            <div className="grid grid-cols-3 gap-3 mb-8">
+              {[
+                {
+                  icon: Salad,
+                  title: lang === "ar" ? "تغذية صحية" : lang === "en" ? "Nutrition" : "Nutrition & Diète",
+                },
+                {
+                  icon: Target,
+                  title: lang === "ar" ? "برنامج مخصص" : lang === "en" ? "Custom Plan" : "Plan Sur-Mesure",
+                },
+                {
+                  icon: Sparkles,
+                  title: lang === "ar" ? "متابعة مستمرة" : lang === "en" ? "1-on-1 Support" : "Suivi Individuel",
+                },
+              ].map(({ icon: Icon, title }) => (
+                <div
+                  key={title}
+                  className="flex items-center gap-2 p-2.5 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm text-xs font-medium text-slate-200"
+                  style={{ flexDirection: lang === "ar" ? "row-reverse" : "row" }}
+                >
+                  <div className="p-1 rounded-lg bg-emerald-500/20 text-emerald-400 shrink-0">
+                    <Icon size={14} />
+                  </div>
+                  <span className="truncate">{title}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex flex-wrap items-center gap-4">
+              <Link
+                href="/services"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-sm transition-all shadow-lg hover:shadow-emerald-500/25"
+              >
+                {lang === "ar"
+                  ? "اكتشف برامج التدريب"
+                  : lang === "en"
+                  ? "Discover Coaching Programs"
+                  : "Découvrir les programmes de coaching"}
+                <ArrowRight size={16} className={lang === "ar" ? "rotate-180" : ""} />
+              </Link>
+            </div>
+          </div>
+
+          {/* Visual Showcase */}
+          <div className="relative rounded-2xl overflow-hidden border border-emerald-500/20 shadow-2xl group">
+            <Image
+              src={coachingImg}
+              alt="Coaching Certifié SanadiDZ"
+              width={600}
+              height={400}
+              className="w-full h-[300px] md:h-[360px] object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            
+            {/* Top Right Tag */}
+            <div className="absolute top-4 right-4 glass px-3 py-1.5 rounded-full text-xs font-bold text-emerald-400 border border-emerald-400/30 flex items-center gap-1.5 backdrop-blur-md">
+              <CheckCircle2 size={14} className="text-emerald-400" />
+              {lang === "ar" ? "مدربون معتمدون" : lang === "en" ? "Accredited Coaches" : "Coachs Agrées"}
+            </div>
+
+            {/* Bottom Floating Stats */}
+            <div className="absolute bottom-4 left-4 right-4 p-3 glass rounded-xl border border-white/10 backdrop-blur-md flex items-center justify-between text-white">
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 rounded-lg bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 font-bold text-sm">
+                  100%
+                </div>
+                <div>
+                  <p className="text-xs font-bold text-white">
+                    {lang === "ar" ? "برامج مخصصة وحصرية" : lang === "en" ? "100% Tailored Programs" : "Programmes 100% Personnalisés"}
+                  </p>
+                  <p className="text-[10px] text-slate-300">
+                    {lang === "ar" ? "مع خبراء صحيين ونفسيين" : lang === "en" ? "With health & wellness experts" : "Par des experts de la santé"}
+                  </p>
                 </div>
               </div>
             </div>
