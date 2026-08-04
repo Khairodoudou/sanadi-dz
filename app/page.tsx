@@ -12,6 +12,7 @@ import {
   Stethoscope, Heart, Video, ClipboardList, Salad, Car,
   ChevronRight, Shield, Clock, Star, Users, CheckCircle,
   ArrowRight, HeartPulse, Baby, Activity, Brain, Award, Sparkles, Target, CheckCircle2,
+  Briefcase, UserCheck,
 } from "lucide-react";
 
 export default async function HomePage() {
@@ -301,44 +302,44 @@ export default async function HomePage() {
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-400/30 text-xs font-semibold mb-4 text-emerald-300 backdrop-blur-md">
               <Award size={15} className="text-emerald-400" />
               {lang === "ar"
-                ? "تدريب معتمد ومتابعة مخصصة"
+                ? "تدريب مهني وتربص عملي"
                 : lang === "en"
-                ? "Certified Coaching & Tailored Support"
-                : "Coaching Certifié & Suivi Sur-Mesure"}
+                ? "Professional Coaching & Practical Internship"
+                : "Coaching Professionnel & Stage Pratique"}
             </div>
             
             <h3 className="text-3xl md:text-4xl font-extrabold mb-4 leading-tight">
               {lang === "ar" ? (
-                <>حقّق أهدافك الصحية مع <span className="text-emerald-400">مدربينا الخبراء</span></>
+                <>حضّر لشهادتك من خلال <span className="text-emerald-400">تدريب عملي مؤطر</span></>
               ) : lang === "en" ? (
-                <>Achieve your health goals with <span className="text-emerald-400">certified expert coaches</span></>
+                <>Prepare for your certification with <span className="text-emerald-400">guided practical coaching</span></>
               ) : (
-                <>Atteignez vos objectifs avec nos <span className="text-emerald-400">coachs experts certifiés</span></>
+                <>Préparez votre certification grâce à un <span className="text-emerald-400">coaching pratique encadré</span></>
               )}
             </h3>
             
             <p className="text-slate-300 text-sm md:text-base leading-relaxed mb-6">
               {lang === "ar"
-                ? "استفد من مرافقة شخصية في التغذية والياقة البدنية والرفاهية مع برامج مخصصة وتوجيه مستمر من طرف متخصصين معتمدين."
+                ? "استفد من مرافقة شخصية عبر تربص عملي تحت إشراف محترفين ذوي خبرة. عزز مهاراتك، وحضّر لشهادتك وحسّن مستواك بفضل تجربة ميدانية ملموسة."
                 : lang === "en"
-                ? "Benefit from personalized nutrition, fitness, and overall wellness coaching with tailored programs and continuous follow-up by accredited experts."
-                : "Bénéficiez d'un accompagnement personnalisé en nutrition, remise en forme et bien-être avec des programmes sur-mesure et un suivi continu par des experts agréés."}
+                ? "Benefit from personalized guidance through a practical internship supervised by experienced professionals. Strengthen your skills, prepare for your certification, and improve your level through hands-on field experience."
+                : "Bénéficiez d'un accompagnement personnalisé à travers un stage pratique supervisé par des professionnels expérimentés. Renforcez vos compétences, préparez votre certification et améliorez votre niveau grâce à une expérience concrète sur le terrain."}
             </p>
 
             {/* Feature Badges */}
             <div className="grid grid-cols-3 gap-3 mb-8">
               {[
                 {
-                  icon: Salad,
-                  title: lang === "ar" ? "تغذية صحية" : lang === "en" ? "Nutrition" : "Nutrition & Diète",
+                  icon: Briefcase,
+                  title: lang === "ar" ? "تربص عملي" : lang === "en" ? "Practical Internship" : "Stage Pratique",
                 },
                 {
-                  icon: Target,
-                  title: lang === "ar" ? "برنامج مخصص" : lang === "en" ? "Custom Plan" : "Plan Sur-Mesure",
+                  icon: Award,
+                  title: lang === "ar" ? "التحضير للشهادة" : lang === "en" ? "Certification Prep" : "Préparation à la Certification",
                 },
                 {
-                  icon: Sparkles,
-                  title: lang === "ar" ? "متابعة مستمرة" : lang === "en" ? "1-on-1 Support" : "Suivi Individuel",
+                  icon: UserCheck,
+                  title: lang === "ar" ? "تأطير من طرف خبراء" : lang === "en" ? "Expert Mentorship" : "Encadrement par des Experts",
                 },
               ].map(({ icon: Icon, title }) => (
                 <div
@@ -360,10 +361,10 @@ export default async function HomePage() {
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-sm transition-all shadow-lg hover:shadow-emerald-500/25"
               >
                 {lang === "ar"
-                  ? "اكتشف برامج التدريب"
+                  ? "اكتشف تربصاتنا"
                   : lang === "en"
-                  ? "Discover Coaching Programs"
-                  : "Découvrir les programmes de coaching"}
+                  ? "Discover Our Internships"
+                  : "Découvrir nos stages"}
                 <ArrowRight size={16} className={lang === "ar" ? "rotate-180" : ""} />
               </Link>
             </div>
@@ -373,7 +374,7 @@ export default async function HomePage() {
           <div className="relative rounded-2xl overflow-hidden border border-emerald-500/20 shadow-2xl group">
             <Image
               src={coachingImg}
-              alt="Coaching Certifié SanadiDZ"
+              alt="Stage Pratique et Coaching Professionnel"
               width={600}
               height={400}
               className="w-full h-[300px] md:h-[360px] object-cover group-hover:scale-105 transition-transform duration-500"
@@ -382,7 +383,7 @@ export default async function HomePage() {
             {/* Top Right Tag */}
             <div className="absolute top-4 right-4 glass px-3 py-1.5 rounded-full text-xs font-bold text-emerald-400 border border-emerald-400/30 flex items-center gap-1.5 backdrop-blur-md">
               <CheckCircle2 size={14} className="text-emerald-400" />
-              {lang === "ar" ? "مدربون معتمدون" : lang === "en" ? "Accredited Coaches" : "Coachs Agrées"}
+              {lang === "ar" ? "مدربون معتمدون" : lang === "en" ? "Certified Trainers" : "Formateurs Certifiés"}
             </div>
 
             {/* Bottom Floating Stats */}
@@ -393,10 +394,10 @@ export default async function HomePage() {
                 </div>
                 <div>
                   <p className="text-xs font-bold text-white">
-                    {lang === "ar" ? "برامج مخصصة وحصرية" : lang === "en" ? "100% Tailored Programs" : "Programmes 100% Personnalisés"}
+                    {lang === "ar" ? "100% تربص عملي" : lang === "en" ? "100% Practical Internship" : "100% Stage Pratique"}
                   </p>
                   <p className="text-[10px] text-slate-300">
-                    {lang === "ar" ? "مع خبراء صحيين ونفسيين" : lang === "en" ? "With health & wellness experts" : "Par des experts de la santé"}
+                    {lang === "ar" ? "تحضير كامل للحصول على الشهادة" : lang === "en" ? "Complete Certification Prep" : "Préparation complète à la certification"}
                   </p>
                 </div>
               </div>
