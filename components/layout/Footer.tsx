@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { Phone, Mail, MapPin, Globe, MessageCircle, Camera } from "lucide-react";
+import { Phone, Mail, MapPin } from "lucide-react";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 
 import logoImg from "@/public/logo.png";
@@ -21,17 +21,6 @@ export function Footer() {
             <p className="text-sm text-[var(--text-muted)] leading-relaxed max-w-xs">
               {t("brand_desc")}
             </p>
-            <div className="flex items-center gap-3 mt-4">
-              <a href="#" className="w-8 h-8 rounded-lg bg-[var(--bg-muted)] flex items-center justify-center hover:bg-primary-600 hover:text-white transition-colors text-[var(--text-muted)]">
-                <Globe size={15} />
-              </a>
-              <a href="#" className="w-8 h-8 rounded-lg bg-[var(--bg-muted)] flex items-center justify-center hover:bg-primary-600 hover:text-white transition-colors text-[var(--text-muted)]">
-                <MessageCircle size={15} />
-              </a>
-              <a href="#" className="w-8 h-8 rounded-lg bg-[var(--bg-muted)] flex items-center justify-center hover:bg-primary-600 hover:text-white transition-colors text-[var(--text-muted)]">
-                <Camera size={15} />
-              </a>
-            </div>
           </div>
 
           {/* Links */}
