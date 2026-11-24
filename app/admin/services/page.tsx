@@ -113,10 +113,10 @@ export default function AdminServicesPage() {
     DAILY_SUPPORT:"bg-amber-500/10 text-amber-600",
   };
   const categoryLabels: Record<string, string> = {
-    HOME_CARE: isAr ? "رعاية منزلية" : "Soins à domicile",
+    HOME_CARE: isAr ? "مرافقة و رعاية صحية" : "Soins à domicile",
     TELEMEDICINE: isAr ? "استشارة عن بعد" : "Télémédecine",
-    COORDINATION: isAr ? "تنسيق الرعاية" : "Coordination",
-    WELLBEING: isAr ? "عافية وصحة" : "Bien-être",
+    COORDINATION: isAr ? "تنسيق المرافقة و الرعاية" : "Coordination",
+    WELLBEING: isAr ? "العافية والصحة" : "Bien-être",
     DAILY_SUPPORT: isAr ? "دعم يومي" : "Assistance",
   };
 

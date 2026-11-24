@@ -115,13 +115,13 @@ export default async function AboutPage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                 <span className="absolute top-4 start-4 px-3 py-1 rounded-full bg-primary-600/90 text-white text-xs font-bold backdrop-blur-md">
-                  {lang === "ar" ? "رعاية منزلية" : lang === "en" ? "Home Care" : "Soins à Domicile"}
+                  {lang === "ar" ? "المرافقة ورعاية منزلية" : lang === "en" ? "Home Care" : "Soins à Domicile"}
                 </span>
               </div>
               <div className="p-6 flex-1 flex flex-col justify-between space-y-3">
                 <div>
                   <h3 className="font-bold text-lg mb-2 group-hover:text-primary-600 transition-colors">
-                    {lang === "ar" ? "الرعاية التمريضية المنزلية" : lang === "en" ? "Home Nursing Care" : "Soins Infirmiers à Domicile"}
+                    {lang === "ar" ? "المرافقة و الرعاية التمريضية المنزلية" : lang === "en" ? "Home Nursing Care" : "Soins Infirmiers à Domicile"}
                   </h3>
                   <p className="text-sm text-[var(--text-muted)] leading-relaxed">
                     {lang === "ar" 

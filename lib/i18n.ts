@@ -674,7 +674,7 @@ export const translations = {
     // Common
     app_name: "سندي",
     app_suffix: "DZ",
-    brand_desc: "منصتكم الرقمية للصحة في الجزائر. رعاية صحية منزلية مهنية، سهلة المنال وفي كل مكان.",
+    brand_desc: "منصتكم الرقمية للصحة في الجزائر. مرافقة و رعاية صحية منزلية مهنية، سهلة المنال وفي كل مكان.",
     all_rights_reserved: "© 2026 سندي. جميع الحقوق محفوظة.",
     confidentiality: "سياسة الخصوصية",
     cgu: "شروط الاستخدام",
@@ -724,15 +724,15 @@ export const translations = {
     // Footer
     footer_services: "الخدمات",
     footer_contact: "اتصل بنا",
-    footer_home_care: "رعاية منزلية",
+    footer_home_care: "مرافقة و رعاية صحية",
     footer_telemedicine: "استشارة عن بعد",
-    footer_coordination: "تنسيق الرعاية",
+    footer_coordination: "تنسيق المرافقة و الرعاية",
     footer_wellbeing: "العافية والصحة",
 
     // Services categories
-    cat_HOME_CARE: "رعاية منزلية",
-    cat_TELEMEDICINE: "طب عن بعد",
-    cat_COORDINATION: "تنسيق الرعاية",
+    cat_HOME_CARE: "مرافقة و رعاية صحية",
+    cat_TELEMEDICINE: "استشارة عن بعد",
+    cat_COORDINATION: "تنسيق المرافقة و الرعاية",
     cat_WELLBEING: "العافية والصحة",
     cat_DAILY_SUPPORT: "الدعم اليومي",
 
@@ -753,8 +753,8 @@ export const translations = {
     home_hero_title_1: "المرافقة الصحية المنزلية،",
     home_hero_title_accent: "في متناول الجميع",
     home_hero_title_2: "في الجزائر",
-    home_hero_desc: "منصة سندي تربط المرضى بنخبة من أخصائيي الرعاية الصحية المؤهلين لتقديم الرعاية المنزلية، الاستشارات عن بعد، والمتابعة الشخصية — في أي مكان في الجزائر.",
-    home_hero_cta_book: "احجز موعداً للرعاية",
+    home_hero_desc: "منصة سندي تربط المرضى بنخبة من أخصائيي الرعاية الصحية المؤهلين لتقديم المرافقة و الرعاية المنزلية، الاستشارات عن بعد، والمتابعة الشخصية — في أي مكان في الجزائر.",
+    home_hero_cta_book: "احجز موعداً",
     home_hero_cta_services: "عرض الخدمات الطبية",
     home_hero_tag_1: "ممرضون مؤهلون",
     home_hero_tag_2: "متاح 24/7",
@@ -804,9 +804,9 @@ export const translations = {
     // About Page
     about_hero_badge: "مهمتنا ورسالتنا",
     about_hero_title: "نجعل",
-    about_hero_accent: "الرعاية الصحية سهلة",
+    about_hero_accent: "المرافقة و الرعاية الصحية سهلة",
     about_hero_title_2: "لكافة الجزائريين",
-    about_hero_desc: "ولدت منصة سندي من واقع ملموس: يفتقر ملايين الجزائريين للرعاية المنزلية ذات الجودة. منصتنا تسد هذه الفجوة بربط المرضى بأخصائيين معتمدين في جميع أنحاء الوطن.",
+    about_hero_desc: "ولدت منصة سندي من واقع ملموس: يفتقر ملايين الجزائريين للمرافقة و الرعاية المنزلية ذات الجودة. منصتنا تسد هذه الفجوة بربط المرضى بأخصائيين معتمدين في جميع أنحاء الوطن.",
     about_values_title: "القيم التي",
     about_values_accent: "نؤمن بها",
     about_value_1_title: "الثقة والأمان",
@@ -835,7 +835,7 @@ export const translations = {
     services_avail_badge: "خدمات طبية متاحة",
     services_title: "خدماتنا",
     services_title_accent: "الصحية والطبية",
-    services_desc: "رعاية صحية منزلية احترافية، متاحة لخدمتكم في كافة أنحاء الجزائر، على مدار الساعة وطوال أيام الأسبوع.",
+    services_desc: "مرافقة و رعاية صحية منزلية احترافية، متاحة لخدمتكم في كافة أنحاء الجزائر، على مدار الساعة وطوال أيام الأسبوع.",
     services_count_label: "خدمة",
     services_book_btn: "احجز الآن",
 

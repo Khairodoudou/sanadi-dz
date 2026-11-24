@@ -24,7 +24,7 @@ export default async function HomePage() {
     { icon: Stethoscope, title: lang === "ar" ? "رعاية تمريضية" : lang === "en" ? "Nursing Care" : "Soins Infirmiers", desc: dict.desc_nursing_care, color: "from-primary-600 to-primary-500" },
     { icon: Heart, title: lang === "ar" ? "رعاية المسنين" : lang === "en" ? "Elderly Care" : "Aide aux Seniors", desc: dict.desc_elderly_care, color: "from-rose-500 to-pink-500" },
     { icon: Video, title: lang === "ar" ? "استشارة بالفيديو" : lang === "en" ? "Video Consultation" : "Téléconsultation", desc: dict.desc_video_consultation, color: "from-violet-500 to-purple-500" },
-    { icon: ClipboardList, title: lang === "ar" ? "تنسيق الرعاية" : lang === "en" ? "Care Coordination" : "Coordination des Soins", desc: dict.desc_care_coordination, color: "from-amber-500 to-orange-500" },
+    { icon: ClipboardList, title: lang === "ar" ? "تنسيق المرافقة و الرعاية" : lang === "en" ? "Care Coordination" : "Coordination des Soins", desc: dict.desc_care_coordination, color: "from-amber-500 to-orange-500" },
     { icon: Baby, title: lang === "ar" ? "رعاية ما بعد الولادة" : lang === "en" ? "Postnatal Care" : "Soins Post-Nataux", desc: dict.desc_postnatal_care, color: "from-pink-500 to-rose-400" },
     { icon: Brain, title: lang === "ar" ? "الدعم النفسي" : lang === "en" ? "Psychological Support" : "Soutien Psychologique", desc: dict.desc_psychology_support, color: "from-indigo-500 to-violet-500" },
     { icon: Salad, title: lang === "ar" ? "التوجيه الغذائي" : lang === "en" ? "Nutrition Coaching" : "Coaching Nutritionnel", desc: dict.desc_nutrition_coaching, color: "from-accent-500 to-accent-600" },

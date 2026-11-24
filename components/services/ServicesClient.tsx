@@ -49,10 +49,10 @@ export function ServicesClient({ services }: { services: ServiceItem[] }) {
 
   const getCategoryLabel = (cat: string) => {
     if (cat === "ALL") return lang === "ar" ? "جميع الخدمات" : lang === "en" ? "All Services" : "Tous les services";
-    if (cat === "HOME_CARE") return lang === "ar" ? "رعاية منزلية" : lang === "en" ? "Home Care" : "Soins à Domicile";
-    if (cat === "TELEMEDICINE") return lang === "ar" ? "تعديل عن بعد" : lang === "en" ? "Telemedicine" : "Télémédecine";
-    if (cat === "COORDINATION") return lang === "ar" ? "تنسيق الرعاية" : lang === "en" ? "Care Coordination" : "Coordination des Soins";
-    if (cat === "WELLBEING") return lang === "ar" ? "صحة وتغذية" : lang === "en" ? "Wellbeing" : "Bien-être & Santé";
+    if (cat === "HOME_CARE") return lang === "ar" ? "مرافقة و رعاية صحية" : lang === "en" ? "Home Care" : "Soins à Domicile";
+    if (cat === "TELEMEDICINE") return lang === "ar" ? "استشارة عن بعد" : lang === "en" ? "Telemedicine" : "Télémédecine";
+    if (cat === "COORDINATION") return lang === "ar" ? "تنسيق المرافقة و الرعاية" : lang === "en" ? "Care Coordination" : "Coordination des Soins";
+    if (cat === "WELLBEING") return lang === "ar" ? "العافية والصحة" : lang === "en" ? "Wellbeing" : "Bien-être & Santé";
     if (cat === "DAILY_SUPPORT") return lang === "ar" ? "دعم يومي" : lang === "en" ? "Daily Support" : "Support Quotidien";
     return cat;
   };

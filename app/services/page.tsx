@@ -70,7 +70,7 @@ export default function PublicServicesPage() {
 
   const L = {
     title:    lang === "ar" ? "خدماتنا الطبية والصحية" : lang === "en" ? "Medical & Health Services" : "Services Médicaux & Santé",
-    subtitle: lang === "ar" ? "تصفح خدمات المهنيين وحجز رعاية متخصصة في منزلكم" : lang === "en" ? "Browse professional services and book specialized care at home" : "Découvrez les soins disponibles et demandez une intervention à domicile",
+    subtitle: lang === "ar" ? "تصفح خدمات المهنيين وحجز مرافقة و رعاية متخصصة في منزلكم" : lang === "en" ? "Browse professional services and book specialized care at home" : "Découvrez les soins disponibles et demandez une intervention à domicile",
     searchPh: lang === "ar" ? "ابحث عن خدمة، تخصص، أو طبيب..." : lang === "en" ? "Search for a service, specialty, or practitioner..." : "Rechercher un service, spécialité, praticien...",
     categ:    lang === "ar" ? "الفئة" : lang === "en" ? "Category" : "Catégorie",
     wil:      lang === "ar" ? "الولاية" : "Wilaya",

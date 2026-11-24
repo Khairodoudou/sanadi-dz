@@ -8,12 +8,12 @@ interface SettingsMap { [key: string]: string }
 
 const DEFAULT_SETTINGS: SettingsMap = {
   platform_name:        "SanadiDZ",
-  platform_email:       "contact@sanadidz.dz",
-  platform_phone:       "+213 XXX XXX XXX",
+  platform_email:       "sanadidz2026@gmail.com",
+  platform_phone:       "+213 798 69 37 99",
   platform_address:     "Alger, Algérie",
   platform_commission:  "10",
   platform_tva:         "0",
-  platform_facebook:    "",
+  platform_facebook:    "https://www.facebook.com/profile.php?id=61595727873793",
   platform_instagram:   "",
   platform_linkedin:    "",
   smtp_host:            "",

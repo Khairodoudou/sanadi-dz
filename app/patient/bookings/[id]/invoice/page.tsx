@@ -43,7 +43,7 @@ export default async function InvoicePage(props: { params: Promise<{ id: string 
         </div>
         <div className="text-right">
           <h2 className="font-bold text-gray-800">SanadiDZ inc.</h2>
-          <p className="text-gray-500 text-sm">12 Rue Didouche Mourad<br />Alger, 16000<br />contact@sanadidz.dz</p>
+          <p className="text-gray-500 text-sm">12 Rue Didouche Mourad<br />Alger, 16000<br />sanadidz2026@gmail.com<br />+213 798 69 37 99</p>
         </div>
       </div>
 

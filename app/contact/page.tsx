@@ -5,8 +5,9 @@ import { Footer } from "@/components/layout/Footer";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import {
   Mail, Phone, MapPin, Clock, Send, CheckCircle,
-  MessageSquare, HeartPulse, AlertCircle,
+  MessageSquare, HeartPulse, AlertCircle, ExternalLink,
 } from "lucide-react";
+import { WhatsAppIcon, FacebookIcon, MessengerIcon } from "@/components/ui/SocialIcons";
 
 export default function ContactPage() {
   const { lang, dir } = useLanguage();
@@ -30,26 +31,45 @@ export default function ContactPage() {
     {
       icon: Phone,
       label: lang === "ar" ? "الهاتف" : lang === "en" ? "Phone" : "Téléphone",
-      value: "+213 23 XX XX XX",
-      sub: lang === "ar" ? "الأحد — الخميس، 8:00 — 18:00" : lang === "en" ? "Sun — Thu, 8:00 AM — 6:00 PM" : "Dim — Jeu, 8h00 — 18h00",
+      value: "+213 798 69 37 99",
+      href: "tel:+213798693799",
+      sub: lang === "ar" ? "متاح للاتصال المباشر 7j/7" : lang === "en" ? "Available 7/7 for direct call" : "Disponible 7j/7 pour appel direct",
+      badge: lang === "ar" ? "اتصال" : "Appeler",
+      color: "from-amber-500/20 to-orange-500/20 text-amber-600 dark:text-amber-400 border-amber-500/30",
+    },
+    {
+      icon: WhatsAppIcon,
+      label: "WhatsApp",
+      value: "+213 798 69 37 99",
+      href: "https://wa.me/213798693799",
+      sub: lang === "ar" ? "مراسلة فورية مباشرة" : lang === "en" ? "Instant WhatsApp chat" : "Discussion instantanée WhatsApp",
+      badge: lang === "ar" ? "واتساب" : "WhatsApp",
+      color: "from-emerald-500/20 to-teal-500/20 text-emerald-600 dark:text-emerald-400 border-emerald-500/30",
     },
     {
       icon: Mail,
       label: lang === "ar" ? "البريد الإلكتروني" : lang === "en" ? "Email" : "Email",
-      value: "contact@sanadidz.dz",
-      sub: lang === "ar" ? "رد خلال 24 ساعة" : lang === "en" ? "Reply within 24 hours" : "Réponse sous 24h",
+      value: "sanadidz2026@gmail.com",
+      href: "mailto:sanadidz2026@gmail.com",
+      sub: lang === "ar" ? "رد واستجابة خلال 24 ساعة" : lang === "en" ? "Reply within 24 hours" : "Réponse sous 24h",
+      badge: lang === "ar" ? "إيميل" : "Email",
+      color: "from-primary-600/20 to-accent-500/20 text-primary-600 dark:text-primary-400 border-primary-500/30",
+    },
+    {
+      icon: FacebookIcon,
+      label: "Facebook / Messenger",
+      value: "Sanadidz",
+      href: "https://www.facebook.com/profile.php?id=61595727873793",
+      sub: lang === "ar" ? "صفحتنا الرسمية والتواصل عبر مسنجر" : lang === "en" ? "Official Facebook Page & Messenger" : "Page officielle & Messenger",
+      badge: lang === "ar" ? "فيسبوك" : "Facebook",
+      color: "from-blue-600/20 to-indigo-600/20 text-blue-600 dark:text-blue-400 border-blue-500/30",
     },
     {
       icon: MapPin,
-      label: lang === "ar" ? "العنوان" : lang === "en" ? "Address" : "Adresse",
-      value: lang === "ar" ? "شارع ديدوش مراد، الجزائر العاصمة" : lang === "en" ? "Didouche Mourad St, Algiers" : "Rue Didouche Mourad, Alger",
-      sub: lang === "ar" ? "الجزائر" : lang === "en" ? "Algeria" : "Algérie",
-    },
-    {
-      icon: Clock,
-      label: lang === "ar" ? "ساعات العمل" : lang === "en" ? "Working Hours" : "Horaires",
-      value: lang === "ar" ? "8:00 — 18:00" : "8:00 AM — 6:00 PM",
-      sub: lang === "ar" ? "الأحد إلى الخميس" : lang === "en" ? "Sunday to Thursday" : "Dimanche au Jeudi",
+      label: lang === "ar" ? "العنوان والتغطية" : lang === "en" ? "Address & Coverage" : "Adresse & Couverture",
+      value: lang === "ar" ? "الجزائر العاصمة، الجزائر" : lang === "en" ? "Algiers, Algeria" : "Alger, Algérie",
+      sub: lang === "ar" ? "تغطية ميدانية لكافة الـ 69 ولاية" : lang === "en" ? "Covering 69 Wilayas across Algeria" : "Intervention dans les 69 wilayas",
+      color: "from-slate-500/20 to-zinc-500/20 text-slate-600 dark:text-slate-400 border-slate-500/30",
     },
   ];
 
@@ -103,19 +123,48 @@ export default function ContactPage() {
               </p>
             </div>
 
-            <div className="space-y-4">
-              {contacts.map(({ icon: Icon, label, value, sub }) => (
-                <div key={label} className="card flex items-start gap-4" style={{ flexDirection: lang === "ar" ? "row-reverse" : "row" }}>
-                  <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-primary-600/20 to-accent-500/20 flex items-center justify-center shrink-0">
-                    <Icon size={18} className="text-primary-600 dark:text-primary-400" />
-                  </div>
-                  <div style={{ textAlign: lang === "ar" ? "right" : "left" }}>
-                    <p className="text-xs text-[var(--text-muted)] mb-0.5">{label}</p>
-                    <p className="font-bold text-sm">{value}</p>
-                    <p className="text-xs text-[var(--text-muted)] mt-0.5">{sub}</p>
-                  </div>
-                </div>
-              ))}
+            <div className="space-y-3.5">
+              {contacts.map(({ icon: Icon, label, value, sub, href, badge, color }) => {
+                const isLink = Boolean(href);
+                const Component = isLink ? "a" : "div";
+                const linkProps = isLink
+                  ? {
+                      href,
+                      target: href?.startsWith("http") ? "_blank" : undefined,
+                      rel: href?.startsWith("http") ? "noopener noreferrer" : undefined,
+                    }
+                  : {};
+
+                return (
+                  <Component
+                    key={label}
+                    {...(linkProps as any)}
+                    className={`card p-4 flex items-center justify-between gap-3 transition-all duration-200 border ${
+                      isLink
+                        ? "hover:border-primary-500 hover:shadow-md hover:-translate-y-0.5 group cursor-pointer"
+                        : ""
+                    }`}
+                    style={{ flexDirection: lang === "ar" ? "row-reverse" : "row" }}
+                  >
+                    <div className="flex items-center gap-3.5" style={{ flexDirection: lang === "ar" ? "row-reverse" : "row" }}>
+                      <div className={`w-11 h-11 rounded-xl bg-gradient-to-br flex items-center justify-center shrink-0 border shadow-sm transition-transform ${isLink ? "group-hover:scale-110" : ""} ${color}`}>
+                        <Icon className="w-5 h-5" />
+                      </div>
+                      <div style={{ textAlign: lang === "ar" ? "right" : "left" }}>
+                        <p className="text-xs text-[var(--text-muted)] mb-0.5">{label}</p>
+                        <p className="font-bold text-sm tracking-tight group-hover:text-primary-600 transition-colors" dir="ltr">{value}</p>
+                        <p className="text-[11px] text-[var(--text-muted)] mt-0.5">{sub}</p>
+                      </div>
+                    </div>
+                    {badge && (
+                      <span className="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-lg bg-[var(--bg-muted)] border border-[var(--border)] text-[var(--text-muted)] group-hover:bg-primary-600 group-hover:text-white group-hover:border-primary-600 transition-all shrink-0">
+                        {badge}
+                        {href?.startsWith("http") && <ExternalLink size={10} className="opacity-70" />}
+                      </span>
+                    )}
+                  </Component>
+                );
+              })}
             </div>
 
             {/* Emergency badge */}
